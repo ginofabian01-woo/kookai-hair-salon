@@ -212,30 +212,8 @@
     display:inline-flex; align-items:center; gap:10px; font-weight:600; font-size:1.1rem; margin-top:10px;
     color:var(--pink);
   }
-  .ig-grid{
-    display:flex; flex-wrap:wrap; justify-content:center; gap:16px; margin:46px 0 34px;
-  }
-  .ig-grid a{
-    position:relative; display:block; aspect-ratio:1/1; border-radius:10px; overflow:hidden;
-    width:260px; flex:0 1 260px;
-  }
-  .ig-grid img{
-    width:100%; height:100%; object-fit:cover; display:block;
-    transition:transform .4s ease;
-  }
-  .ig-grid a:hover img{transform:scale(1.06);}
-  .ig-grid a::after{
-    content:'\f16d'; font-family:'Font Awesome 6 Brands'; font-weight:400;
-    position:absolute; inset:auto 10px 10px auto; color:var(--white);
-    font-size:1rem; opacity:0; transition:opacity .25s ease;
-    text-shadow:0 1px 4px rgba(0,0,0,0.5);
-  }
-  .ig-grid a:hover::after{opacity:1;}
-  .ig-grid .placeholder-img{aspect-ratio:1/1; border-radius:10px;}
-  .ig-grid .placeholder-img i{font-size:1.1rem;}
-  .ig-grid .placeholder-img span{display:none;}
-  @media (max-width:760px){
-    .ig-grid a{width:42vw; flex:0 1 42vw;}
+  .ig-widget{
+    margin:46px 0 34px; border-radius:16px; overflow:hidden;
   }
 
   /* VISIT / CONTACT */
@@ -303,6 +281,7 @@
     .about-visual{order:2; height:340px;}
     .visit .wrap{grid-template-columns:1fr;}
     .footer-top{grid-template-columns:1fr; text-align:center;}
+    .footer-tagline{margin-left:auto; margin-right:auto;}
     .footer-social{justify-content:center;}
   }
   @media (max-width:640px){
@@ -365,15 +344,10 @@
       <p>Every color transformation, cut, and before-and-after gets posted there first — a living portfolio that's always more current than any gallery page could be.</p>
       <a class="ig-handle" href="https://www.instagram.com/hairbykookai/" target="_blank" rel="noopener"><i class="fa-brands fa-instagram"></i> @hairbykookai</a>
     </div>
-    <div class="ig-grid reveal">
-      <a href="https://www.instagram.com/p/DWmHmTDEQZw/" target="_blank" rel="noopener"><img src="images/portfolio/ig9.jpg" alt="Ash blonde balayage by Kookai Hair Salon" loading="lazy"></a>
-      <a href="https://www.instagram.com/p/DQfAM_yjypm/" target="_blank" rel="noopener"><img src="images/portfolio/ig10.jpg" alt="Sleek long brunette color by Kookai Hair Salon" loading="lazy"></a>
-      <a href="https://www.instagram.com/hairbykookai/" target="_blank" rel="noopener"><img src="images/portfolio/ig1.jpg" alt="Balayage color work by Kookai Hair Salon" loading="lazy"></a>
-      <a href="https://www.instagram.com/hairbykookai/" target="_blank" rel="noopener"><img src="images/portfolio/ig2.jpg" alt="Textured lob haircut by Kookai Hair Salon" loading="lazy"></a>
-      <a href="https://www.instagram.com/hairbykookai/" target="_blank" rel="noopener"><img src="images/portfolio/ig4.jpg" alt="Dimensional brunette color by Kookai Hair Salon" loading="lazy"></a>
-      <a href="https://www.instagram.com/hairbykookai/" target="_blank" rel="noopener"><img src="images/portfolio/ig6.jpg" alt="Curly hair color by Kookai Hair Salon" loading="lazy"></a>
-      <a href="https://www.instagram.com/hairbykookai/" target="_blank" rel="noopener"><img src="images/portfolio/ig7.jpg" alt="Blonde balayage by Kookai Hair Salon" loading="lazy"></a>
-      <a href="https://www.instagram.com/hairbykookai/" target="_blank" rel="noopener"><img src="images/portfolio/ig11.jpg" alt="Dimensional blonde balayage by Kookai Hair Salon" loading="lazy"></a>
+    <div class="ig-widget reveal">
+      <!-- Elfsight Instagram Feed | Untitled Instagram Feed -->
+      <script src="https://elfsightcdn.com/platform.js" async></script>
+      <div class="elfsight-app-835c6ace-03ca-4e37-8073-80648e149e09" data-elfsight-app-lazy></div>
     </div>
     <a href="https://www.instagram.com/hairbykookai/" target="_blank" rel="noopener" class="btn btn-dark reveal"><i class="fa-brands fa-instagram"></i> View Full Feed</a>
   </div>
@@ -470,7 +444,7 @@
     <div class="footer-top">
       <div>
         <div class="footer-brand">Kookai Hair Salon</div>
-        <p style="font-size:0.88rem; max-width:320px;">A Filipina-owned business based in Milwaukee, WI. Accepting new clients.</p>
+        <p class="footer-tagline" style="font-size:0.88rem; max-width:320px;">A Filipina-owned business based in Milwaukee, WI. Accepting new clients.</p>
         <div class="footer-social">
           <a class="icon-btn" href="https://www.instagram.com/hairbykookai/" target="_blank" rel="noopener" style="border-color:rgba(255,255,255,0.2); color:#fff;"><i class="fa-brands fa-instagram"></i></a>
           <a class="icon-btn" href="https://square.site/book/27AGSWKGCJSG0/kookai-hair-salon-milwaukee-wi" target="_blank" rel="noopener" style="border-color:rgba(255,255,255,0.2); color:#fff;"><i class="fa-regular fa-calendar-check"></i></a>
