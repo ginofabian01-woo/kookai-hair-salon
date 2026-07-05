@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Services | Kookai Hair Salon — Milwaukee, WI</title>
+<meta name="description" content="Full service menu at Kookai Hair Salon in Milwaukee, WI — haircuts, lived-in color, highlights, and treatments. Book any service directly online.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,500&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+<style>
+  :root{
+    --pink:#f77fbe;
+    --pink-soft:#ffd7e8;
+    --pink-tint:#fff2f8;
+    --black:#141116;
+    --charcoal:#232026;
+    --white:#fffdfb;
+    --gold:#c8a35a;
+    --gold-soft:#e6d3ab;
+    --line:rgba(20,17,22,0.1);
+    --shadow: 0 20px 50px rgba(20,17,22,0.10);
+    --radius: 18px;
+    --maxw: 1180px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    font-family:'Poppins', sans-serif;
+    color:var(--black);
+    background:var(--white);
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,.serif{
+    font-family:'Playfair Display', serif;
+    margin:0;
+    letter-spacing:0.01em;
+  }
+  a{color:inherit; text-decoration:none;}
+  img{max-width:100%; display:block;}
+  .wrap{max-width:var(--maxw); margin:0 auto; padding:0 28px;}
+  .eyebrow{
+    text-transform:uppercase;
+    letter-spacing:0.28em;
+    font-size:0.72rem;
+    font-weight:600;
+    color:var(--pink);
+  }
+  .btn{
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    padding:15px 30px;
+    border-radius:999px;
+    font-weight:600;
+    font-size:0.92rem;
+    letter-spacing:0.03em;
+    cursor:pointer;
+    border:1px solid transparent;
+    transition:transform .25s ease, box-shadow .25s ease, background .25s ease, color .25s ease;
+    white-space:nowrap;
+  }
+  .btn:hover{transform:translateY(-2px);}
+  .btn-primary{background:var(--pink); color:#fff; box-shadow:0 12px 24px rgba(247,127,190,0.35);}
+  .btn-primary:hover{box-shadow:0 16px 32px rgba(247,127,190,0.45);}
+  .btn-dark{background:var(--black); color:#fff;}
+  .btn-outline{background:transparent; border-color:rgba(255,255,255,0.5); color:#fff;}
+  .btn-outline.on-light{border-color:var(--black); color:var(--black);}
+
+  /* NAV — identical to the main page */
+  header.site-nav{
+    position:fixed; top:0; left:0; right:0; z-index:100;
+    padding:22px 0;
+    background:rgba(255,253,251,0.7);
+    backdrop-filter:blur(10px);
+    transition:padding .35s ease, box-shadow .35s ease, background .35s ease;
+  }
+  header.site-nav .wrap{display:flex; align-items:center; justify-content:space-between;}
+  header.site-nav.scrolled{
+    background:rgba(255,253,251,0.92);
+    padding:12px 0;
+    box-shadow:0 6px 24px rgba(20,17,22,0.06);
+  }
+  .brand{display:flex; align-items:center;}
+  .brand img{height:88px; width:auto; display:block; transform:translateY(17px);}
+  nav.links{display:flex; align-items:center; gap:34px;}
+  nav.links a{
+    font-size:0.86rem; font-weight:500; letter-spacing:0.02em;
+    color:var(--black);
+    position:relative;
+  }
+  nav.links a:not(.btn)::after{
+    content:''; position:absolute; left:0; right:0; bottom:-6px; height:2px;
+    background:var(--pink); transform:scaleX(0); transform-origin:left;
+    transition:transform .25s ease;
+  }
+  nav.links a:not(.btn):hover::after{transform:scaleX(1);}
+  nav.links a.active::after{transform:scaleX(1);}
+  .nav-cta{display:flex; align-items:center; gap:14px;}
+  .icon-btn{
+    width:38px; height:38px; border-radius:50%;
+    display:flex; align-items:center; justify-content:center;
+    border:1px solid var(--line); color:var(--black);
+    transition:all .3s ease;
+  }
+  .icon-btn:hover{background:var(--pink); border-color:var(--pink); color:#fff;}
+  .menu-toggle{display:none; background:none; border:none; font-size:1.4rem; color:var(--black); cursor:pointer;}
+
+  /* PAGE HERO */
+  .page-hero{
+    padding:180px 0 64px;
+    background:
+      radial-gradient(circle at 12% 15%, rgba(247,127,190,0.14), transparent 45%),
+      radial-gradient(circle at 88% 80%, rgba(200,163,90,0.10), transparent 50%),
+      linear-gradient(160deg, var(--pink-tint) 0%, var(--white) 60%);
+    text-align:center;
+  }
+  .page-hero h1{font-size:clamp(2.2rem,5vw,3.4rem); margin:14px 0 18px;}
+  .page-hero p{max-width:560px; margin:0 auto; color:rgba(20,17,22,0.65);}
+
+  /* SERVICE MENU */
+  .menu{padding:70px 0 90px;}
+  .svc-cat{margin-bottom:56px;}
+  .svc-cat:last-child{margin-bottom:0;}
+  .svc-cat-head{display:flex; align-items:baseline; gap:18px; margin-bottom:26px;}
+  .svc-cat-head h2{font-size:1.6rem;}
+  .svc-cat-head .rule{flex:1; height:1px; background:var(--line);}
+  .svc-grid{display:grid; grid-template-columns:1fr 1fr; gap:20px;}
+  .svc-card{
+    background:#fff;
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    padding:28px 30px;
+    display:flex; flex-direction:column; gap:12px;
+    box-shadow:0 8px 26px rgba(20,17,22,0.05);
+    transition:transform .25s ease, box-shadow .25s ease;
+  }
+  .svc-card:hover{transform:translateY(-3px); box-shadow:0 16px 38px rgba(20,17,22,0.09);}
+  .svc-card h3{font-size:1.18rem;}
+  .svc-card p{margin:0; font-size:0.92rem; color:rgba(20,17,22,0.65);}
+  .svc-meta{display:flex; align-items:center; gap:8px; font-size:0.8rem; color:rgba(20,17,22,0.5);}
+  .svc-meta i{color:var(--pink); font-size:0.85rem;}
+  .svc-card .btn{align-self:flex-start; margin-top:auto; padding:11px 24px; font-size:0.85rem;}
+  .svc-note{
+    margin-top:46px; text-align:center; font-size:0.82rem; color:rgba(20,17,22,0.45);
+  }
+  .svc-callout{
+    max-width:760px; margin:56px auto 0;
+    background:var(--pink-tint);
+    border:1px solid rgba(247,127,190,0.4);
+    border-radius:14px;
+    padding:20px 26px;
+    display:flex; gap:14px; align-items:flex-start;
+    font-size:0.95rem; line-height:1.6; color:rgba(20,17,22,0.82);
+  }
+  .svc-callout i{color:var(--pink); font-size:1.15rem; margin-top:3px;}
+  .svc-callout strong{color:var(--black);}
+
+  /* FINAL CTA */
+  .final-cta{
+    background:linear-gradient(120deg, var(--pink), #f9a4d1);
+    color:#fff; text-align:center; padding:76px 0;
+  }
+  .final-cta h2{font-size:clamp(1.8rem,4vw,2.6rem); margin-bottom:16px;}
+  .final-cta p{max-width:520px; margin:0 auto 34px; color:rgba(255,255,255,0.9);}
+
+  /* FOOTER — identical to the main page */
+  footer{background:var(--black); color:rgba(255,253,251,0.7); padding:60px 0 26px;}
+  .footer-top{display:grid; grid-template-columns:1.4fr 1fr 1fr; gap:40px; padding-bottom:40px; border-bottom:1px solid rgba(255,255,255,0.08);}
+  .footer-brand{color:#fff; font-family:'Playfair Display', serif; font-size:1.3rem; margin-bottom:14px;}
+  .footer-col h4{color:#fff; font-size:0.85rem; text-transform:uppercase; letter-spacing:0.06em; margin-bottom:16px;}
+  .footer-col a{display:block; font-size:0.9rem; margin-bottom:10px; color:rgba(255,253,251,0.65); transition:color .2s ease;}
+  .footer-col a:hover{color:var(--pink);}
+  .footer-social{display:flex; gap:12px; margin-top:16px;}
+  .footer-bottom{display:flex; justify-content:space-between; flex-wrap:wrap; gap:12px; padding-top:24px; font-size:0.78rem; color:rgba(255,253,251,0.4);}
+
+  .reveal.pre{opacity:0; transform:translateY(24px);}
+  .reveal{transition:opacity .7s ease, transform .7s ease;}
+  .reveal.in{opacity:1; transform:translateY(0);}
+
+  @media (max-width:980px){
+    .svc-grid{grid-template-columns:1fr;}
+    .footer-top{grid-template-columns:1fr; text-align:center;}
+    .footer-tagline{margin-left:auto; margin-right:auto;}
+    .footer-social{justify-content:center;}
+  }
+  @media (max-width:640px){
+    nav.links{position:fixed; top:0; right:-100%; height:100vh; width:78%; background:var(--white); flex-direction:column; justify-content:center; gap:26px; transition:right .35s ease; box-shadow:-10px 0 40px rgba(0,0,0,0.15);}
+    nav.links.open{right:0;}
+    nav.links a{color:var(--black) !important;}
+    .menu-toggle{display:block;}
+    .nav-cta .btn span{display:none;}
+    .page-hero{padding:150px 0 50px;}
+  }
+</style>
+</head>
+<body>
+
+<!-- ================= NAV ================= -->
+<header class="site-nav" id="siteNav">
+  <div class="wrap">
+    <a href="index.html" class="brand"><img src="images/logo.png" alt="Kookai Hair Salon"></a>
+    <nav class="links" id="navLinks">
+      <a href="https://www.instagram.com/hairbykookai/" target="_blank" rel="noopener">Instagram</a>
+      <a href="services.html" class="active">Services</a>
+      <a href="salon-policy.html">Salon Policy</a>
+      <a href="index.html#about">About</a>
+      <a href="index.html#visit">Visit</a>
+      <a href="https://square.site/book/27AGSWKGCJSG0/kookai-hair-salon-milwaukee-wi" target="_blank" rel="noopener" class="btn btn-primary"><i class="fa-regular fa-calendar-check"></i> Book Now</a>
+    </nav>
+    <div class="nav-cta">
+      <a class="icon-btn" href="https://www.instagram.com/hairbykookai/" target="_blank" rel="noopener" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+      <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu"><i class="fa-solid fa-bars"></i></button>
+    </div>
+  </div>
+</header>
+
+<!-- ================= PAGE HERO ================= -->
+<section class="page-hero">
+  <div class="wrap">
+    <span class="eyebrow">The Menu</span>
+    <h1>Services</h1>
+    <p>Every service below books directly through Katrina's live Square calendar — pick what you need and reserve your chair in a couple of taps. Not sure where to start? Begin with a free color consultation.</p>
+  </div>
+</section>
+
+<!-- ================= SERVICE MENU ================= -->
+<section class="menu">
+  <div class="wrap">
+
+    <div class="svc-cat reveal">
+      <div class="svc-cat-head"><h2>Haircuts</h2><div class="rule"></div></div>
+      <div class="svc-grid">
+        <div class="svc-card">
+          <h3>Woman's Haircut</h3>
+          <p>A full appointment, not a rushed trim — includes a consultation, wash, scalp massage, and blowout so you leave styled and ready.</p>
+          <div class="svc-meta"><i class="fa-regular fa-clock"></i> 1 hr 45 min</div>
+          <a href="https://book.squareup.com/appointments/c18a0462-bd8c-42f8-8439-2b16ac0e0d58/location/27AGSWKGCJSG0/services/GGEOM5EW3DQTZHPGCHVBOIHY" target="_blank" rel="noopener" class="btn btn-primary"><i class="fa-regular fa-calendar-check"></i> Book</a>
+        </div>
+        <div class="svc-card">
+          <h3>Girl's Haircut <span style="font-size:0.75em; font-weight:400;">(11 &amp; under)</span></h3>
+          <p>A gentle, kid-friendly appointment with wash, cut, and blowout included.</p>
+          <div class="svc-meta"><i class="fa-regular fa-clock"></i> 1 hr 30 min</div>
+          <a href="https://book.squareup.com/appointments/c18a0462-bd8c-42f8-8439-2b16ac0e0d58/location/27AGSWKGCJSG0/services/QXJ2ISJ2AZHIIOIA2AIUQUSL" target="_blank" rel="noopener" class="btn btn-primary"><i class="fa-regular fa-calendar-check"></i> Book</a>
+        </div>
+        <div class="svc-card">
+          <h3>Bang Trim</h3>
+          <p>A quick tidy-up between full cuts to keep your fringe sitting exactly where it should.</p>
+          <div class="svc-meta"><i class="fa-regular fa-clock"></i> 20 min</div>
+          <a href="https://book.squareup.com/appointments/c18a0462-bd8c-42f8-8439-2b16ac0e0d58/location/27AGSWKGCJSG0/services/D5EGWQC2J3I2BSIT3HBZ6YVR" target="_blank" rel="noopener" class="btn btn-primary"><i class="fa-regular fa-calendar-check"></i> Book</a>
+        </div>
+        <div class="svc-card">
+          <h3>Wash &amp; Blowout</h3>
+          <p>Freshly washed, smoothed, and styled — perfect before an event or just because.</p>
+          <div class="svc-meta"><i class="fa-regular fa-clock"></i> 1 hr 30 min</div>
+          <a href="https://book.squareup.com/appointments/c18a0462-bd8c-42f8-8439-2b16ac0e0d58/location/27AGSWKGCJSG0/services/MC5SMW7LLCCNOTIEMVXTPGPM" target="_blank" rel="noopener" class="btn btn-primary"><i class="fa-regular fa-calendar-check"></i> Book</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="svc-cat reveal">
+      <div class="svc-cat-head"><h2>Color &amp; Highlights</h2><div class="rule"></div></div>
+      <div class="svc-grid">
+        <div class="svc-card">
+          <h3>Single Process Permanent Color</h3>
+          <p>One all-over shade, applied roots to ends — perfect for grey coverage or changing your whole hair color.</p>
+          <div class="svc-meta"><i class="fa-regular fa-clock"></i> 2 hrs</div>
+          <a href="https://book.squareup.com/appointments/c18a0462-bd8c-42f8-8439-2b16ac0e0d58/location/27AGSWKGCJSG0/services/Y4WQHM7PAQLBLFXL2MJMZOOV" target="_blank" rel="noopener" class="btn btn-primary"><i class="fa-regular fa-calendar-check"></i> Book</a>
+        </div>
+        <div class="svc-card">
+          <h3>Permanent Root Touch-Up</h3>
+          <p>Single process color on the regrowth only — keeps your existing shade seamless between full color appointments.</p>
+          <div class="svc-meta"><i class="fa-regular fa-clock"></i> 2 hrs</div>
+          <a href="https://book.squareup.com/appointments/c18a0462-bd8c-42f8-8439-2b16ac0e0d58/location/27AGSWKGCJSG0/services/QOY6WIQGS55K6GTSZVB5SNGJ" target="_blank" rel="noopener" class="btn btn-primary"><i class="fa-regular fa-calendar-check"></i> Book</a>
+        </div>
+        <div class="svc-card">
+          <h3>Toner / Gloss</h3>
+          <p>Refreshes previously lightened hair and cuts unwanted tones — the fastest way to bring color back to life.</p>
+          <div class="svc-meta"><i class="fa-regular fa-clock"></i> 1 hr 30 min</div>
+          <a href="https://book.squareup.com/appointments/c18a0462-bd8c-42f8-8439-2b16ac0e0d58/location/27AGSWKGCJSG0/services/55NYWCCH4ZLERJ3LM4NOMUHX" target="_blank" rel="noopener" class="btn btn-primary"><i class="fa-regular fa-calendar-check"></i> Book</a>
+        </div>
+        <div class="svc-card">
+          <h3>Full Head Highlights</h3>
+          <p>Traditional foils or hand-painted balayage, through the whole head — toners included.</p>
+          <div class="svc-meta"><i class="fa-regular fa-clock"></i> 4 hrs</div>
+          <a href="https://book.squareup.com/appointments/c18a0462-bd8c-42f8-8439-2b16ac0e0d58/location/27AGSWKGCJSG0/services/TDSWQDOEBGKTL2JRYI3ZWSQR" target="_blank" rel="noopener" class="btn btn-primary"><i class="fa-regular fa-calendar-check"></i> Book</a>
+        </div>
+        <div class="svc-card">
+          <h3>Partial Highlights</h3>
+          <p>Brightness concentrated where it counts — the crown, part line, and face-framing sections.</p>
+          <div class="svc-meta"><i class="fa-regular fa-clock"></i> 3 hrs 30 min</div>
+          <a href="https://book.squareup.com/appointments/c18a0462-bd8c-42f8-8439-2b16ac0e0d58/location/27AGSWKGCJSG0/services/C2URSQXDGYSX6KWJFKAVC6ML" target="_blank" rel="noopener" class="btn btn-primary"><i class="fa-regular fa-calendar-check"></i> Book</a>
+        </div>
+        <div class="svc-card">
+          <h3>Color &amp; Highlights</h3>
+          <p>The full transformation: all-over color plus highlights in one appointment, with toners included.</p>
+          <div class="svc-meta"><i class="fa-regular fa-clock"></i> 5 hrs</div>
+          <a href="https://book.squareup.com/appointments/c18a0462-bd8c-42f8-8439-2b16ac0e0d58/location/27AGSWKGCJSG0/services/HEJIG4GKXC3ILDPB7DA7U7TY" target="_blank" rel="noopener" class="btn btn-primary"><i class="fa-regular fa-calendar-check"></i> Book</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="svc-cat reveal">
+      <div class="svc-cat-head"><h2>Treatments</h2><div class="rule"></div></div>
+      <div class="svc-grid">
+        <div class="svc-card">
+          <h3>Head Spa</h3>
+          <p>A scalp and hair treatment built around a proper head massage — deeply relaxing, with a style included to finish.</p>
+          <div class="svc-meta"><i class="fa-regular fa-clock"></i> 1 hr 30 min</div>
+          <a href="https://book.squareup.com/appointments/c18a0462-bd8c-42f8-8439-2b16ac0e0d58/location/27AGSWKGCJSG0/services/FPEKKNBDCXQP2JOU6J4RPCKA" target="_blank" rel="noopener" class="btn btn-primary"><i class="fa-regular fa-calendar-check"></i> Book</a>
+        </div>
+        <div class="svc-card">
+          <h3>Keratin Treatment</h3>
+          <p>Blocks humidity and eliminates frizz for smoother, easier styling — results last up to 5 months.</p>
+          <div class="svc-meta"><i class="fa-regular fa-clock"></i> 3 hrs</div>
+          <a href="https://book.squareup.com/appointments/c18a0462-bd8c-42f8-8439-2b16ac0e0d58/location/27AGSWKGCJSG0/services/5BVHE7GKNKVNR2SXBDSQZOQN" target="_blank" rel="noopener" class="btn btn-primary"><i class="fa-regular fa-calendar-check"></i> Book</a>
+        </div>
+        <div class="svc-card">
+          <h3>Deep Conditioning Add-On</h3>
+          <p>An intensive moisture boost added to any appointment — great for dry or color-treated hair.</p>
+          <div class="svc-meta"><i class="fa-regular fa-clock"></i> 20 min add-on</div>
+          <a href="https://book.squareup.com/appointments/c18a0462-bd8c-42f8-8439-2b16ac0e0d58/location/27AGSWKGCJSG0/services/KJ4HCRI7N5KVNYGCVK4YFD3E" target="_blank" rel="noopener" class="btn btn-primary"><i class="fa-regular fa-calendar-check"></i> Book</a>
+        </div>
+        <div class="svc-card">
+          <h3>Hot Oil Add-On</h3>
+          <p>A warm oil treatment that nourishes the scalp and adds softness and shine — added to any appointment.</p>
+          <div class="svc-meta"><i class="fa-regular fa-clock"></i> 20 min add-on</div>
+          <a href="https://book.squareup.com/appointments/c18a0462-bd8c-42f8-8439-2b16ac0e0d58/location/27AGSWKGCJSG0/services/SLWABIHTHQICHADWOEINVTVT" target="_blank" rel="noopener" class="btn btn-primary"><i class="fa-regular fa-calendar-check"></i> Book</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="svc-cat reveal">
+      <div class="svc-cat-head"><h2>Consultation</h2><div class="rule"></div></div>
+      <div class="svc-grid">
+        <div class="svc-card">
+          <h3>Color Consultation <span style="font-size:0.72em; font-weight:400; color:var(--pink);">Free</span></h3>
+          <p>Twenty minutes with Katrina to talk through your hair history and goals before booking a color service. (No-shows are charged $15.)</p>
+          <div class="svc-meta"><i class="fa-regular fa-clock"></i> 20 min</div>
+          <a href="https://book.squareup.com/appointments/c18a0462-bd8c-42f8-8439-2b16ac0e0d58/location/27AGSWKGCJSG0/services/W7MYWSUBWTRILDUGQ5IYL7X7" target="_blank" rel="noopener" class="btn btn-primary"><i class="fa-regular fa-calendar-check"></i> Book</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="svc-callout reveal">
+      <i class="fa-solid fa-circle-info"></i>
+      <div>
+        <strong>A note on pricing:</strong> final cost can vary from the listed starting price depending on your hair's length and density, and the time and product your service requires. Katrina will always confirm any adjustments with you before your service begins.
+      </div>
+    </div>
+    <p class="svc-note">Service list and durations are pulled from the salon's Square booking page. Current pricing is shown at checkout when you book.</p>
+  </div>
+</section>
+
+<!-- ================= FINAL CTA ================= -->
+<section class="final-cta">
+  <div class="wrap reveal">
+    <h2>Not sure what your hair needs?</h2>
+    <p>Start with a free color consultation — twenty minutes with Katrina to make a plan together.</p>
+    <a href="https://book.squareup.com/appointments/c18a0462-bd8c-42f8-8439-2b16ac0e0d58/location/27AGSWKGCJSG0/services/W7MYWSUBWTRILDUGQ5IYL7X7" target="_blank" rel="noopener" class="btn btn-dark"><i class="fa-regular fa-calendar-check"></i> Book a Free Consultation</a>
+  </div>
+</section>
+
+<!-- ================= FOOTER ================= -->
+<footer>
+  <div class="wrap">
+    <div class="footer-top">
+      <div>
+        <div class="footer-brand">Kookai Hair Salon</div>
+        <p class="footer-tagline" style="font-size:0.88rem; max-width:320px;">A Filipina-owned business based in Milwaukee, WI. Accepting new clients.</p>
+        <div class="footer-social">
+          <a class="icon-btn" href="https://www.instagram.com/hairbykookai/" target="_blank" rel="noopener" style="border-color:rgba(255,255,255,0.2); color:#fff;"><i class="fa-brands fa-instagram"></i></a>
+          <a class="icon-btn" href="https://www.facebook.com/kookaihairsalon/" target="_blank" rel="noopener" style="border-color:rgba(255,255,255,0.2); color:#fff;"><i class="fa-brands fa-facebook-f"></i></a>
+          <a class="icon-btn" href="https://square.site/book/27AGSWKGCJSG0/kookai-hair-salon-milwaukee-wi" target="_blank" rel="noopener" style="border-color:rgba(255,255,255,0.2); color:#fff;"><i class="fa-regular fa-calendar-check"></i></a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Explore</h4>
+        <a href="https://www.instagram.com/hairbykookai/" target="_blank" rel="noopener">Instagram</a>
+        <a href="https://www.facebook.com/kookaihairsalon/" target="_blank" rel="noopener">Facebook</a>
+        <a href="services.html">Services</a>
+        <a href="index.html#about">About</a>
+        <a href="index.html#visit">Visit</a>
+      </div>
+      <div class="footer-col">
+        <h4>Visit</h4>
+        <a href="https://www.google.com/maps/search/?api=1&query=7815+W+Burleigh+St+Milwaukee+WI+53222" target="_blank" rel="noopener">7815 W Burleigh St, Milwaukee, WI</a>
+        <a href="https://square.site/book/27AGSWKGCJSG0/kookai-hair-salon-milwaukee-wi" target="_blank" rel="noopener">Book an Appointment</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; <span id="year"></span> Kookai Hair Salon. All rights reserved.</span>
+      <span>Site built with love, for a great stylist.</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  // Sticky nav background on scroll
+  const nav = document.getElementById('siteNav');
+  const onScroll = () => {
+    if (window.scrollY > 40) nav.classList.add('scrolled');
+    else nav.classList.remove('scrolled');
+  };
+  window.addEventListener('scroll', onScroll);
+  onScroll();
+
+  // Mobile menu toggle
+  const menuToggle = document.getElementById('menuToggle');
+  const navLinks = document.getElementById('navLinks');
+  menuToggle.addEventListener('click', () => navLinks.classList.toggle('open'));
+  navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navLinks.classList.remove('open')));
+
+  // Reveal on scroll (progressive enhancement — content visible by default)
+  const revealEls = document.querySelectorAll('.reveal:not(.in)');
+  revealEls.forEach(el => el.classList.add('pre'));
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('in');
+        entry.target.classList.remove('pre');
+        io.unobserve(entry.target);
+      }
+    });
+  }, {threshold: 0.12});
+  revealEls.forEach(el => io.observe(el));
+</script>
+
+</body>
+</html>
