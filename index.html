@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kookai Hair Salon | Lived-In Color Specialist — Milwaukee, WI</title>
+<meta name="description" content="Kookai Hair Salon in Milwaukee, WI — lived-in color specialist. See her latest work on Instagram @hairbykookai and book your appointment.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,500&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+<style>
+  :root{
+    --pink:#ff2f87;
+    --pink-soft:#ffd7e8;
+    --pink-tint:#fff2f8;
+    --black:#141116;
+    --charcoal:#232026;
+    --white:#fffdfb;
+    --gold:#c8a35a;
+    --gold-soft:#e6d3ab;
+    --line:rgba(20,17,22,0.1);
+    --shadow: 0 20px 50px rgba(20,17,22,0.10);
+    --radius: 18px;
+    --maxw: 1180px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    font-family:'Poppins', sans-serif;
+    color:var(--black);
+    background:var(--white);
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,.serif{
+    font-family:'Playfair Display', serif;
+    margin:0;
+    letter-spacing:0.01em;
+  }
+  a{color:inherit; text-decoration:none;}
+  img{max-width:100%; display:block;}
+  .wrap{max-width:var(--maxw); margin:0 auto; padding:0 28px;}
+  .eyebrow{
+    text-transform:uppercase;
+    letter-spacing:0.28em;
+    font-size:0.72rem;
+    font-weight:600;
+    color:var(--pink);
+  }
+  .btn{
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    padding:15px 30px;
+    border-radius:999px;
+    font-weight:600;
+    font-size:0.92rem;
+    letter-spacing:0.03em;
+    cursor:pointer;
+    border:1px solid transparent;
+    transition:transform .25s ease, box-shadow .25s ease, background .25s ease, color .25s ease;
+    white-space:nowrap;
+  }
+  .btn:hover{transform:translateY(-2px);}
+  .btn-primary{background:var(--pink); color:#fff; box-shadow:0 12px 24px rgba(255,47,135,0.35);}
+  .btn-primary:hover{box-shadow:0 16px 32px rgba(255,47,135,0.45);}
+  .btn-dark{background:var(--black); color:#fff;}
+  .btn-outline{background:transparent; border-color:rgba(255,255,255,0.5); color:#fff;}
+  .btn-outline.on-light{border-color:var(--black); color:var(--black);}
+  .btn-gold{background:var(--gold); color:#fff;}
+
+  /* NAV — one consistent light style, since the hero is now light too */
+  header.site-nav{
+    position:fixed; top:0; left:0; right:0; z-index:100;
+    padding:22px 0;
+    background:rgba(255,253,251,0.7);
+    backdrop-filter:blur(10px);
+    transition:padding .35s ease, box-shadow .35s ease, background .35s ease;
+  }
+  header.site-nav .wrap{display:flex; align-items:center; justify-content:space-between;}
+  header.site-nav.scrolled{
+    background:rgba(255,253,251,0.92);
+    padding:12px 0;
+    box-shadow:0 6px 24px rgba(20,17,22,0.06);
+  }
+  /* Brand mark: her real logo (recolored to sit on a light nav — white background,
+     black wordmark, original pink scissors/flower preserved). */
+  .brand{display:flex; align-items:center;}
+  .brand img{height:40px; width:auto; display:block;}
+  nav.links{display:flex; align-items:center; gap:34px;}
+  nav.links a{
+    font-size:0.86rem; font-weight:500; letter-spacing:0.02em;
+    color:var(--black);
+    position:relative;
+  }
+  nav.links a:not(.btn)::after{
+    content:''; position:absolute; left:0; right:0; bottom:-6px; height:2px;
+    background:var(--pink); transform:scaleX(0); transform-origin:left;
+    transition:transform .25s ease;
+  }
+  nav.links a:not(.btn):hover::after{transform:scaleX(1);}
+  .nav-cta{display:flex; align-items:center; gap:14px;}
+  .icon-btn{
+    width:38px; height:38px; border-radius:50%;
+    display:flex; align-items:center; justify-content:center;
+    border:1px solid var(--line); color:var(--black);
+    transition:all .3s ease;
+  }
+  .icon-btn:hover{background:var(--pink); border-color:var(--pink); color:#fff;}
+  .menu-toggle{display:none; background:none; border:none; font-size:1.4rem; color:var(--black); cursor:pointer;}
+
+  /* HERO — light, airy blend instead of the previous dark backdrop */
+  .hero{
+    position:relative; min-height:92vh; display:flex; align-items:center;
+    background:
+      radial-gradient(circle at 12% 15%, rgba(255,47,135,0.14), transparent 45%),
+      radial-gradient(circle at 88% 75%, rgba(200,163,90,0.20), transparent 55%),
+      linear-gradient(180deg, #fffdfb 0%, #fff6fa 55%, #fdf3f7 100%);
+    color:var(--black);
+    overflow:hidden;
+    padding-top:130px;
+  }
+  .hero .wrap{position:relative; z-index:2; display:grid; grid-template-columns:1.1fr 0.9fr; gap:60px; align-items:center;}
+  .hero-copy .eyebrow{color:var(--pink);}
+  .hero-copy h1{
+    font-size:clamp(2.6rem, 5vw, 4.1rem);
+    line-height:1.08;
+    margin:18px 0 20px;
+  }
+  .hero-copy h1 em{
+    font-style:italic; color:var(--pink);
+  }
+  .hero-tagline{
+    font-family:'Playfair Display', serif; font-style:italic; font-size:1.15rem;
+    color:var(--black); opacity:0.75; margin-bottom:22px;
+  }
+  .hero-copy p{
+    max-width:460px; color:rgba(20,17,22,0.65); font-size:1.02rem; margin-bottom:38px;
+  }
+  .hero-actions{display:flex; gap:16px; flex-wrap:wrap;}
+
+  .hero-visual{position:relative; height:480px;}
+  .hero-frame{
+    position:absolute; border-radius:24px; overflow:hidden;
+    box-shadow:0 24px 50px rgba(20,17,22,0.14);
+    border:1px solid rgba(20,17,22,0.06);
+  }
+  .hero-frame.main{width:74%; height:88%; top:0; right:0; z-index:2;}
+  .hero-frame.accent{width:52%; height:46%; left:0; bottom:0; z-index:3; box-shadow:0 18px 40px rgba(20,17,22,0.18);}
+  .hero-frame img{width:100%; height:100%; object-fit:cover; display:block;}
+
+  .placeholder-img{
+    width:100%; height:100%;
+    background:
+      repeating-linear-gradient(135deg, rgba(255,47,135,0.10) 0 14px, rgba(200,163,90,0.10) 14px 28px),
+      linear-gradient(135deg, #2a242c, #17141a);
+    display:flex; flex-direction:column; align-items:center; justify-content:center;
+    color:rgba(255,255,255,0.55);
+    gap:8px;
+    text-align:center;
+    position:relative;
+  }
+  .placeholder-img i{font-size:1.5rem; color:var(--pink);}
+  .placeholder-img span{font-size:0.72rem; letter-spacing:0.05em; text-transform:uppercase; padding:0 14px;}
+  .placeholder-img.light{
+    background:
+      repeating-linear-gradient(135deg, rgba(255,47,135,0.06) 0 14px, rgba(200,163,90,0.08) 14px 28px),
+      linear-gradient(135deg, #f4ecef, #fff);
+    color:rgba(20,17,22,0.45);
+  }
+
+  /* SECTION helpers */
+  section{padding:110px 0;}
+  .section-head{max-width:640px; margin:0 auto 60px; text-align:center;}
+  .section-head h2{font-size:clamp(2rem, 3.4vw, 2.7rem); margin-top:14px;}
+  .section-head p{color:rgba(20,17,22,0.62); margin-top:16px; font-size:1rem;}
+  .section-head.left{margin:0 0 50px; text-align:left;}
+  .section-head.minimal{margin-bottom:30px;}
+
+  /* ABOUT */
+  .about{background:var(--pink-tint);}
+  .about .wrap{display:grid; grid-template-columns:0.85fr 1.15fr; gap:70px; align-items:center;}
+  .about-visual{position:relative; height:460px;}
+  .about-frame{position:absolute; border-radius:20px; overflow:hidden; box-shadow:var(--shadow);}
+  .about-frame.a{width:80%; height:85%; left:0; top:0;}
+  .about-frame.b{width:46%; height:42%; right:0; bottom:0; box-shadow:0 18px 40px rgba(20,17,22,0.22); border:1px solid rgba(20,17,22,0.06);}
+  .about-frame img{width:100%; height:100%; object-fit:cover; display:block;}
+  .about-copy h2{font-size:clamp(1.9rem,3vw,2.5rem); margin:14px 0 18px;}
+  .about-chips{display:flex; flex-wrap:wrap; gap:12px; margin:30px 0 36px;}
+  .about-chip{
+    display:inline-flex; align-items:center; gap:9px;
+    padding:11px 22px; border-radius:999px;
+    background:var(--white);
+    border:1px solid rgba(200,163,90,0.4);
+    font-family:'Playfair Display', serif; font-style:italic; font-size:0.92rem;
+    color:var(--black);
+    box-shadow:0 8px 20px rgba(20,17,22,0.05);
+    transition:border-color .25s ease, transform .25s ease;
+  }
+  .about-chip::before{
+    content:''; width:5px; height:5px; border-radius:50%;
+    background:var(--pink); flex:none;
+  }
+  .about-chip:hover{border-color:var(--pink); transform:translateY(-2px);}
+
+
+  /* INSTAGRAM */
+  .instagram{text-align:center;}
+  .ig-handle{
+    display:inline-flex; align-items:center; gap:10px; font-weight:600; font-size:1.1rem; margin-top:10px;
+    color:var(--pink);
+  }
+  .ig-grid{
+    display:flex; flex-wrap:wrap; justify-content:center; gap:16px; margin:46px 0 34px;
+  }
+  .ig-grid a{
+    position:relative; display:block; aspect-ratio:1/1; border-radius:10px; overflow:hidden;
+    width:260px; flex:0 1 260px;
+  }
+  .ig-grid img{
+    width:100%; height:100%; object-fit:cover; display:block;
+    transition:transform .4s ease;
+  }
+  .ig-grid a:hover img{transform:scale(1.06);}
+  .ig-grid a::after{
+    content:'\f16d'; font-family:'Font Awesome 6 Brands'; font-weight:400;
+    position:absolute; inset:auto 10px 10px auto; color:var(--white);
+    font-size:1rem; opacity:0; transition:opacity .25s ease;
+    text-shadow:0 1px 4px rgba(0,0,0,0.5);
+  }
+  .ig-grid a:hover::after{opacity:1;}
+  .ig-grid .placeholder-img{aspect-ratio:1/1; border-radius:10px;}
+  .ig-grid .placeholder-img i{font-size:1.1rem;}
+  .ig-grid .placeholder-img span{display:none;}
+  @media (max-width:760px){
+    .ig-grid a{width:42vw; flex:0 1 42vw;}
+  }
+
+  /* VISIT / CONTACT */
+  .visit{background:var(--pink-tint);}
+  .visit .wrap{display:grid; grid-template-columns:1fr 1fr; gap:60px;}
+  .visit-card{
+    background:var(--white); border-radius:20px; padding:40px; box-shadow:var(--shadow);
+  }
+  .visit-card h3{font-size:1.3rem; margin-bottom:22px;}
+  .info-row{display:flex; gap:16px; padding:14px 0; border-bottom:1px solid var(--line);}
+  .info-row:last-child{border-bottom:none;}
+  .info-row i{color:var(--pink); font-size:1.05rem; margin-top:3px;}
+  .info-row .label{font-size:0.75rem; text-transform:uppercase; letter-spacing:0.06em; color:rgba(20,17,22,0.45); margin-bottom:2px;}
+  .hours-table{width:100%; border-collapse:collapse; font-size:0.92rem;}
+  .hours-table td{padding:9px 0; border-bottom:1px solid var(--line);}
+  .hours-table tr:last-child td{border-bottom:none;}
+  .hours-table td:last-child{text-align:right; font-weight:500;}
+  .verify-note{
+    margin-top:18px; font-size:0.76rem; color:rgba(20,17,22,0.42); line-height:1.5;
+  }
+
+  /* FINAL CTA */
+  .final-cta{
+    background:linear-gradient(120deg, var(--pink), #ff6fa8);
+    color:#fff; text-align:center;
+  }
+  .final-cta h2{font-size:clamp(2rem,4vw,2.9rem); margin-bottom:20px;}
+  .final-cta p{max-width:520px; margin:0 auto 34px; color:rgba(255,255,255,0.9);}
+  .final-cta .btn-dark{background:var(--black);}
+  .final-cta .btn-outline{border-color:rgba(255,255,255,0.6);}
+  .final-cta.compact{padding:64px 0;}
+  .final-cta.compact h2{font-size:clamp(1.6rem,3vw,2.1rem); margin-bottom:14px;}
+  .final-cta.compact p{margin-bottom:26px;}
+
+  /* FOOTER */
+  footer{background:var(--black); color:rgba(255,253,251,0.7); padding:60px 0 26px;}
+  .footer-top{display:grid; grid-template-columns:1.4fr 1fr 1fr; gap:40px; padding-bottom:40px; border-bottom:1px solid rgba(255,255,255,0.08);}
+  .footer-brand{color:#fff; font-family:'Playfair Display', serif; font-size:1.3rem; margin-bottom:14px;}
+  .footer-col h4{color:#fff; font-size:0.85rem; text-transform:uppercase; letter-spacing:0.06em; margin-bottom:16px;}
+  .footer-col a{display:block; font-size:0.9rem; margin-bottom:10px; color:rgba(255,253,251,0.65); transition:color .2s ease;}
+  .footer-col a:hover{color:var(--pink);}
+  .footer-social{display:flex; gap:12px; margin-top:16px;}
+  .footer-bottom{display:flex; justify-content:space-between; flex-wrap:wrap; gap:12px; padding-top:24px; font-size:0.78rem; color:rgba(255,253,251,0.4);}
+
+  /* Reveal-on-scroll is progressive enhancement: elements are fully visible by
+     default. JS adds .pre (hidden+offset) right before observing, then swaps to
+     .in when scrolled into view. If JS never runs, content simply stays visible. */
+  .reveal.pre{opacity:0; transform:translateY(24px);}
+  .reveal{transition:opacity .7s ease, transform .7s ease;}
+  .reveal.in{opacity:1; transform:translateY(0);}
+
+  @media (max-width:980px){
+    .hero .wrap{grid-template-columns:1fr; text-align:center;}
+    .hero-copy p{margin-left:auto; margin-right:auto;}
+    .hero-visual{height:380px; margin-top:20px;}
+    .about .wrap{grid-template-columns:1fr;}
+    .about-visual{order:2; height:340px;}
+    .visit .wrap{grid-template-columns:1fr;}
+    .footer-top{grid-template-columns:1fr; text-align:center;}
+    .footer-social{justify-content:center;}
+  }
+  @media (max-width:640px){
+    nav.links{position:fixed; top:0; right:-100%; height:100vh; width:78%; background:var(--white); flex-direction:column; justify-content:center; gap:26px; transition:right .35s ease; box-shadow:-10px 0 40px rgba(0,0,0,0.15);}
+    nav.links.open{right:0;}
+    nav.links a{color:var(--black) !important;}
+    .menu-toggle{display:block;}
+    .nav-cta .btn span{display:none;}
+  }
+</style>
+</head>
+<body>
+
+<!-- ================= NAV ================= -->
+<header class="site-nav" id="siteNav">
+  <div class="wrap">
+    <a href="#home" class="brand"><img src="images/logo.png" alt="Kookai Hair Salon"></a>
+    <nav class="links" id="navLinks">
+      <a href="https://www.instagram.com/hairbykookai/" target="_blank" rel="noopener">Instagram</a>
+      <a href="#about">About</a>
+      <a href="#visit">Visit</a>
+      <a href="https://square.site/book/27AGSWKGCJSG0/kookai-hair-salon-milwaukee-wi" target="_blank" rel="noopener" class="btn btn-primary"><i class="fa-regular fa-calendar-check"></i> Book Now</a>
+    </nav>
+    <div class="nav-cta">
+      <a class="icon-btn" href="https://www.instagram.com/hairbykookai/" target="_blank" rel="noopener" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+      <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu"><i class="fa-solid fa-bars"></i></button>
+    </div>
+  </div>
+</header>
+
+<!-- ================= HERO ================= -->
+<section class="hero" id="home">
+  <div class="wrap">
+    <div class="hero-copy reveal in">
+      <h1>Lived-in color, <br><em>done beautifully.</em></h1>
+      <p class="hero-tagline">Color Specialist based in Milwaukee, WI. Accepting new clients.</p>
+      <p>Kookai Hair Salon is a Filipina owned salon, built by a stylist who calls Milwaukee home. Every visit begins with a real conversation about you — and ends with hair you'll want to show off.</p>
+      <div class="hero-actions">
+        <a href="https://square.site/book/27AGSWKGCJSG0/kookai-hair-salon-milwaukee-wi" target="_blank" rel="noopener" class="btn btn-primary"><i class="fa-regular fa-calendar-check"></i> Book an Appointment</a>
+        <a href="https://www.instagram.com/hairbykookai/" target="_blank" rel="noopener" class="btn btn-outline on-light"><i class="fa-brands fa-instagram"></i> Follow @hairbykookai</a>
+      </div>
+    </div>
+    <div class="hero-visual reveal in">
+      <div class="hero-frame main">
+        <img src="images/hero-featured.jpg" alt="Katrina, stylist and owner of Kookai Hair Salon">
+      </div>
+      <div class="hero-frame accent">
+        <img src="images/hero-interior.jpg" alt="Inside Kookai Hair Salon, Milwaukee WI">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= INSTAGRAM ================= -->
+<!-- This now stands in for a portfolio section: her real portfolio lives on Instagram
+     and updates constantly, so rather than a static gallery of placeholders, the site
+     points visitors straight there, right after the hero. -->
+<section class="instagram" id="instagram">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">Her Work</span>
+      <h2>See Every Look on Instagram</h2>
+      <p>Every color transformation, cut, and before-and-after gets posted there first — a living portfolio that's always more current than any gallery page could be.</p>
+      <a class="ig-handle" href="https://www.instagram.com/hairbykookai/" target="_blank" rel="noopener"><i class="fa-brands fa-instagram"></i> @hairbykookai</a>
+    </div>
+    <div class="ig-grid reveal">
+      <a href="https://www.instagram.com/p/DWmHmTDEQZw/" target="_blank" rel="noopener"><img src="images/portfolio/ig9.jpg" alt="Ash blonde balayage by Kookai Hair Salon" loading="lazy"></a>
+      <a href="https://www.instagram.com/p/DQfAM_yjypm/" target="_blank" rel="noopener"><img src="images/portfolio/ig10.jpg" alt="Sleek long brunette color by Kookai Hair Salon" loading="lazy"></a>
+      <a href="https://www.instagram.com/p/DXiGGAVjcf0/" target="_blank" rel="noopener"><img src="images/portfolio/ig12.jpg" alt="Red copper hair color by Kookai Hair Salon" loading="lazy"></a>
+      <a href="https://www.instagram.com/hairbykookai/" target="_blank" rel="noopener"><img src="images/portfolio/ig1.jpg" alt="Balayage color work by Kookai Hair Salon" loading="lazy"></a>
+      <a href="https://www.instagram.com/hairbykookai/" target="_blank" rel="noopener"><img src="images/portfolio/ig2.jpg" alt="Textured lob haircut by Kookai Hair Salon" loading="lazy"></a>
+      <a href="https://www.instagram.com/hairbykookai/" target="_blank" rel="noopener"><img src="images/portfolio/ig4.jpg" alt="Dimensional brunette color by Kookai Hair Salon" loading="lazy"></a>
+      <a href="https://www.instagram.com/hairbykookai/" target="_blank" rel="noopener"><img src="images/portfolio/ig6.jpg" alt="Curly hair color by Kookai Hair Salon" loading="lazy"></a>
+      <a href="https://www.instagram.com/hairbykookai/" target="_blank" rel="noopener"><img src="images/portfolio/ig7.jpg" alt="Blonde balayage by Kookai Hair Salon" loading="lazy"></a>
+      <a href="https://www.instagram.com/hairbykookai/" target="_blank" rel="noopener"><img src="images/portfolio/ig11.jpg" alt="Dimensional blonde balayage by Kookai Hair Salon" loading="lazy"></a>
+    </div>
+    <a href="https://www.instagram.com/hairbykookai/" target="_blank" rel="noopener" class="btn btn-dark reveal"><i class="fa-brands fa-instagram"></i> View Full Feed</a>
+  </div>
+</section>
+
+<!-- ================= MID-PAGE BOOKING CTA ================= -->
+<!-- Placed right after the Instagram feed on purpose: this is the moment a visitor is most
+     convinced by the work they just saw, so it's the highest-converting spot for a second
+     booking prompt (the hero CTA + this one bookend the page). -->
+<section class="final-cta compact">
+  <div class="wrap reveal">
+    <h2>Ready to book your next look?</h2>
+    <p>Her calendar fills up fast — reserve your chair before you keep scrolling.</p>
+    <div class="hero-actions" style="justify-content:center;">
+      <a href="https://square.site/book/27AGSWKGCJSG0/kookai-hair-salon-milwaukee-wi" target="_blank" rel="noopener" class="btn btn-dark"><i class="fa-regular fa-calendar-check"></i> Book an Appointment</a>
+    </div>
+  </div>
+</section>
+
+<!-- ================= ABOUT ================= -->
+<section class="about" id="about">
+  <div class="wrap">
+    <div class="about-visual reveal">
+      <div class="about-frame a"><img src="images/about-portrait.jpg" alt="Katrina, owner and stylist at Kookai Hair Salon"></div>
+      <div class="about-frame b"><img src="images/about-detail.jpg" alt="Salon detail at Kookai Hair Salon"></div>
+    </div>
+    <div class="about-copy reveal">
+      <span class="eyebrow">Meet Your Stylist</span>
+      <h2>Balayage &amp; Lived-In Color Specialist</h2>
+      <p>Kookai Hair Salon was built on one idea: color should grow out as beautifully as it goes on. Based in Milwaukee, WI, the salon focuses on low-maintenance, natural-looking color, precision cuts, and a warm, welcoming chair for every client.</p>
+      <div class="about-chips">
+        <span class="about-chip">Free Consultations</span>
+        <span class="about-chip">Accepting New Clients</span>
+      </div>
+      <a href="https://square.site/book/27AGSWKGCJSG0/kookai-hair-salon-milwaukee-wi" target="_blank" rel="noopener" class="btn btn-dark"><i class="fa-regular fa-calendar-check"></i> Reserve Your Chair</a>
+    </div>
+  </div>
+</section>
+
+<!-- ================= VISIT ================= -->
+<section class="visit" id="visit">
+  <div class="wrap">
+    <div class="visit-card reveal">
+      <h3><i class="fa-solid fa-location-dot" style="color:var(--pink); margin-right:8px;"></i>Visit the Salon</h3>
+      <div class="info-row">
+        <i class="fa-solid fa-map-pin"></i>
+        <div><div class="label">Address</div>7815 W Burleigh St, Milwaukee, WI 53110</div>
+      </div>
+      <div class="info-row">
+        <i class="fa-brands fa-instagram"></i>
+        <div><div class="label">Instagram</div>@hairbykookai</div>
+      </div>
+      <a href="https://www.google.com/maps/search/?api=1&query=7815+W+Burleigh+St+Milwaukee+WI" target="_blank" rel="noopener" class="btn btn-outline on-light" style="margin-top:20px;"><i class="fa-solid fa-diamond-turn-right"></i> Get Directions</a>
+      <p class="verify-note">Address, hours, and pricing are pulled from the salon's Square booking page — please double-check these details before the site goes live.</p>
+    </div>
+    <div class="visit-card reveal">
+      <h3><i class="fa-regular fa-clock" style="color:var(--pink); margin-right:8px;"></i>Hours</h3>
+      <table class="hours-table">
+        <tr><td>Monday</td><td>9:00 AM – 5:00 PM</td></tr>
+        <tr><td>Tuesday</td><td>Closed</td></tr>
+        <tr><td>Wednesday</td><td>9:00 AM – 5:00 PM</td></tr>
+        <tr><td>Thursday</td><td>9:00 AM – 5:00 PM</td></tr>
+        <tr><td>Friday</td><td>9:00 AM – 5:00 PM</td></tr>
+        <tr><td>Saturday</td><td>9:00 AM – 3:00 PM</td></tr>
+        <tr><td>Sunday</td><td>Closed</td></tr>
+      </table>
+      <a href="https://square.site/book/27AGSWKGCJSG0/kookai-hair-salon-milwaukee-wi" target="_blank" rel="noopener" class="btn btn-primary" style="margin-top:22px;"><i class="fa-regular fa-calendar-check"></i> Book Now</a>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FINAL CTA ================= -->
+<section class="final-cta">
+  <div class="wrap reveal">
+    <h2>Ready for your next look?</h2>
+    <p>Book directly through Square, or follow along on Instagram to see the latest color work before your appointment.</p>
+    <div class="hero-actions" style="justify-content:center;">
+      <a href="https://square.site/book/27AGSWKGCJSG0/kookai-hair-salon-milwaukee-wi" target="_blank" rel="noopener" class="btn btn-dark"><i class="fa-regular fa-calendar-check"></i> Book on Square</a>
+      <a href="https://www.instagram.com/hairbykookai/" target="_blank" rel="noopener" class="btn btn-outline"><i class="fa-brands fa-instagram"></i> Follow @hairbykookai</a>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FOOTER ================= -->
+<footer>
+  <div class="wrap">
+    <div class="footer-top">
+      <div>
+        <div class="footer-brand">Kookai Hair Salon</div>
+        <p style="font-size:0.88rem; max-width:320px;">A Filipina-owned business based in Milwaukee, WI. Accepting new clients.</p>
+        <div class="footer-social">
+          <a class="icon-btn" href="https://www.instagram.com/hairbykookai/" target="_blank" rel="noopener" style="border-color:rgba(255,255,255,0.2); color:#fff;"><i class="fa-brands fa-instagram"></i></a>
+          <a class="icon-btn" href="https://square.site/book/27AGSWKGCJSG0/kookai-hair-salon-milwaukee-wi" target="_blank" rel="noopener" style="border-color:rgba(255,255,255,0.2); color:#fff;"><i class="fa-regular fa-calendar-check"></i></a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Explore</h4>
+        <a href="https://www.instagram.com/hairbykookai/" target="_blank" rel="noopener">Instagram</a>
+        <a href="#about">About</a>
+        <a href="#visit">Visit</a>
+      </div>
+      <div class="footer-col">
+        <h4>Visit</h4>
+        <a href="https://www.google.com/maps/search/?api=1&query=7815+W+Burleigh+St+Milwaukee+WI" target="_blank" rel="noopener">7815 W Burleigh St, Milwaukee, WI</a>
+        <a href="https://square.site/book/27AGSWKGCJSG0/kookai-hair-salon-milwaukee-wi" target="_blank" rel="noopener">Book an Appointment</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; <span id="year"></span> Kookai Hair Salon. All rights reserved.</span>
+      <span>Site built with love, for a great stylist.</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  // Sticky nav background on scroll
+  const nav = document.getElementById('siteNav');
+  const onScroll = () => {
+    if (window.scrollY > 40) nav.classList.add('scrolled');
+    else nav.classList.remove('scrolled');
+  };
+  window.addEventListener('scroll', onScroll);
+  onScroll();
+
+  // Mobile menu toggle
+  const menuToggle = document.getElementById('menuToggle');
+  const navLinks = document.getElementById('navLinks');
+  menuToggle.addEventListener('click', () => navLinks.classList.toggle('open'));
+  navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navLinks.classList.remove('open')));
+
+  // Reveal on scroll (progressive enhancement — see CSS comment above .reveal.pre)
+  const revealEls = document.querySelectorAll('.reveal:not(.in)');
+  revealEls.forEach(el => el.classList.add('pre'));
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('in');
+        entry.target.classList.remove('pre');
+        io.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15 });
+  revealEls.forEach(el => io.observe(el));
+</script>
+
+</body>
+</html>
