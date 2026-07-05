@@ -13,7 +13,7 @@
 
 <style>
   :root{
-    --pink:#ff2f87;
+    --pink:#f77fbe;
     --pink-soft:#ffd7e8;
     --pink-tint:#fff2f8;
     --black:#141116;
@@ -66,8 +66,8 @@
     white-space:nowrap;
   }
   .btn:hover{transform:translateY(-2px);}
-  .btn-primary{background:var(--pink); color:#fff; box-shadow:0 12px 24px rgba(255,47,135,0.35);}
-  .btn-primary:hover{box-shadow:0 16px 32px rgba(255,47,135,0.45);}
+  .btn-primary{background:var(--pink); color:#fff; box-shadow:0 12px 24px rgba(247,127,190,0.35);}
+  .btn-primary:hover{box-shadow:0 16px 32px rgba(247,127,190,0.45);}
   .btn-dark{background:var(--black); color:#fff;}
   .btn-outline{background:transparent; border-color:rgba(255,255,255,0.5); color:#fff;}
   .btn-outline.on-light{border-color:var(--black); color:var(--black);}
@@ -117,7 +117,7 @@
   .hero{
     position:relative; min-height:92vh; display:flex; align-items:center;
     background:
-      radial-gradient(circle at 12% 15%, rgba(255,47,135,0.14), transparent 45%),
+      radial-gradient(circle at 12% 15%, rgba(247,127,190,0.14), transparent 45%),
       radial-gradient(circle at 88% 75%, rgba(200,163,90,0.20), transparent 55%),
       linear-gradient(180deg, #fffdfb 0%, #fff6fa 55%, #fdf3f7 100%);
     color:var(--black);
@@ -149,14 +149,13 @@
     box-shadow:0 24px 50px rgba(20,17,22,0.14);
     border:1px solid rgba(20,17,22,0.06);
   }
-  .hero-frame.main{width:74%; height:88%; top:0; right:0; z-index:2;}
-  .hero-frame.accent{width:52%; height:46%; left:0; bottom:0; z-index:3; box-shadow:0 18px 40px rgba(20,17,22,0.18);}
+  .hero-frame.main{width:84%; height:100%; top:0; left:50%; transform:translateX(-50%); z-index:2;}
   .hero-frame img{width:100%; height:100%; object-fit:cover; display:block;}
 
   .placeholder-img{
     width:100%; height:100%;
     background:
-      repeating-linear-gradient(135deg, rgba(255,47,135,0.10) 0 14px, rgba(200,163,90,0.10) 14px 28px),
+      repeating-linear-gradient(135deg, rgba(247,127,190,0.10) 0 14px, rgba(200,163,90,0.10) 14px 28px),
       linear-gradient(135deg, #2a242c, #17141a);
     display:flex; flex-direction:column; align-items:center; justify-content:center;
     color:rgba(255,255,255,0.55);
@@ -168,7 +167,7 @@
   .placeholder-img span{font-size:0.72rem; letter-spacing:0.05em; text-transform:uppercase; padding:0 14px;}
   .placeholder-img.light{
     background:
-      repeating-linear-gradient(135deg, rgba(255,47,135,0.06) 0 14px, rgba(200,163,90,0.08) 14px 28px),
+      repeating-linear-gradient(135deg, rgba(247,127,190,0.06) 0 14px, rgba(200,163,90,0.08) 14px 28px),
       linear-gradient(135deg, #f4ecef, #fff);
     color:rgba(20,17,22,0.45);
   }
@@ -186,8 +185,7 @@
   .about .wrap{display:grid; grid-template-columns:0.85fr 1.15fr; gap:70px; align-items:center;}
   .about-visual{position:relative; height:460px;}
   .about-frame{position:absolute; border-radius:20px; overflow:hidden; box-shadow:var(--shadow);}
-  .about-frame.a{width:80%; height:85%; left:0; top:0;}
-  .about-frame.b{width:46%; height:42%; right:0; bottom:0; box-shadow:0 18px 40px rgba(20,17,22,0.22); border:1px solid rgba(20,17,22,0.06);}
+  .about-frame.a{width:90%; height:100%; left:50%; top:0; transform:translateX(-50%);}
   .about-frame img{width:100%; height:100%; object-fit:cover; display:block;}
   .about-copy h2{font-size:clamp(1.9rem,3vw,2.5rem); margin:14px 0 18px;}
   .about-chips{display:flex; flex-wrap:wrap; gap:12px; margin:30px 0 36px;}
@@ -261,7 +259,7 @@
 
   /* FINAL CTA */
   .final-cta{
-    background:linear-gradient(120deg, var(--pink), #ff6fa8);
+    background:linear-gradient(120deg, var(--pink), #f9a4d1);
     color:#fff; text-align:center;
   }
   .final-cta h2{font-size:clamp(2rem,4vw,2.9rem); margin-bottom:20px;}
@@ -343,9 +341,6 @@
       <div class="hero-frame main">
         <img src="images/hero-featured.jpg" alt="Katrina, stylist and owner of Kookai Hair Salon">
       </div>
-      <div class="hero-frame accent">
-        <img src="images/hero-interior.jpg" alt="Inside Kookai Hair Salon, Milwaukee WI">
-      </div>
     </div>
   </div>
 </section>
@@ -365,7 +360,6 @@
     <div class="ig-grid reveal">
       <a href="https://www.instagram.com/p/DWmHmTDEQZw/" target="_blank" rel="noopener"><img src="images/portfolio/ig9.jpg" alt="Ash blonde balayage by Kookai Hair Salon" loading="lazy"></a>
       <a href="https://www.instagram.com/p/DQfAM_yjypm/" target="_blank" rel="noopener"><img src="images/portfolio/ig10.jpg" alt="Sleek long brunette color by Kookai Hair Salon" loading="lazy"></a>
-      <a href="https://www.instagram.com/p/DXiGGAVjcf0/" target="_blank" rel="noopener"><img src="images/portfolio/ig12.jpg" alt="Red copper hair color by Kookai Hair Salon" loading="lazy"></a>
       <a href="https://www.instagram.com/hairbykookai/" target="_blank" rel="noopener"><img src="images/portfolio/ig1.jpg" alt="Balayage color work by Kookai Hair Salon" loading="lazy"></a>
       <a href="https://www.instagram.com/hairbykookai/" target="_blank" rel="noopener"><img src="images/portfolio/ig2.jpg" alt="Textured lob haircut by Kookai Hair Salon" loading="lazy"></a>
       <a href="https://www.instagram.com/hairbykookai/" target="_blank" rel="noopener"><img src="images/portfolio/ig4.jpg" alt="Dimensional brunette color by Kookai Hair Salon" loading="lazy"></a>
@@ -396,11 +390,10 @@
   <div class="wrap">
     <div class="about-visual reveal">
       <div class="about-frame a"><img src="images/about-portrait.jpg" alt="Katrina, owner and stylist at Kookai Hair Salon"></div>
-      <div class="about-frame b"><img src="images/about-detail.jpg" alt="Salon detail at Kookai Hair Salon"></div>
     </div>
     <div class="about-copy reveal">
       <span class="eyebrow">Meet Your Stylist</span>
-      <h2>Balayage &amp; Lived-In Color Specialist</h2>
+      <h2>Lived-In Color Specialist</h2>
       <p>Kookai Hair Salon was built on one idea: color should grow out as beautifully as it goes on. Based in Milwaukee, WI, the salon focuses on low-maintenance, natural-looking color, precision cuts, and a warm, welcoming chair for every client.</p>
       <div class="about-chips">
         <span class="about-chip">Free Consultations</span>
