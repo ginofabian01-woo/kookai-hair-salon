@@ -249,6 +249,12 @@
   .info-row:last-child{border-bottom:none;}
   .info-row i{color:var(--pink); font-size:1.05rem; margin-top:3px;}
   .info-row .label{font-size:0.75rem; text-transform:uppercase; letter-spacing:0.06em; color:rgba(20,17,22,0.45); margin-bottom:2px;}
+  .map-embed{
+    width:100%; aspect-ratio:16/10; border-radius:16px; overflow:hidden;
+    margin:4px 0 18px; box-shadow:0 12px 28px rgba(20,17,22,0.12);
+    border:1px solid rgba(20,17,22,0.06);
+  }
+  .map-embed iframe{width:100%; height:100%; border:0; display:block;}
   .hours-table{width:100%; border-collapse:collapse; font-size:0.92rem;}
   .hours-table td{padding:9px 0; border-bottom:1px solid var(--line);}
   .hours-table tr:last-child td{border-bottom:none;}
@@ -411,14 +417,22 @@
       <h3><i class="fa-solid fa-location-dot" style="color:var(--pink); margin-right:8px;"></i>Visit the Salon</h3>
       <div class="info-row">
         <i class="fa-solid fa-map-pin"></i>
-        <div><div class="label">Address</div>7815 W Burleigh St, Milwaukee, WI 53110</div>
+        <div><div class="label">Address</div>7815 W Burleigh St, Milwaukee, WI 53222</div>
+      </div>
+      <div class="map-embed">
+        <iframe
+          src="https://www.google.com/maps/embed/v1/streetview?key=YOUR_GOOGLE_MAPS_API_KEY&location=43.0750719,-88.0103978&heading=210&pitch=0&fov=90"
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          allowfullscreen>
+        </iframe>
       </div>
       <div class="info-row">
         <i class="fa-brands fa-instagram"></i>
         <div><div class="label">Instagram</div>@hairbykookai</div>
       </div>
-      <a href="https://www.google.com/maps/search/?api=1&query=7815+W+Burleigh+St+Milwaukee+WI" target="_blank" rel="noopener" class="btn btn-outline on-light" style="margin-top:20px;"><i class="fa-solid fa-diamond-turn-right"></i> Get Directions</a>
-      <p class="verify-note">Address, hours, and pricing are pulled from the salon's Square booking page — please double-check these details before the site goes live.</p>
+      <a href="https://www.google.com/maps/search/?api=1&query=7815+W+Burleigh+St+Milwaukee+WI+53222" target="_blank" rel="noopener" class="btn btn-outline on-light" style="margin-top:20px;"><i class="fa-solid fa-diamond-turn-right"></i> Get Directions</a>
+      <p class="verify-note">Hours and pricing are pulled from the salon's Square booking page — please double-check these details before the site goes live.</p>
     </div>
     <div class="visit-card reveal">
       <h3><i class="fa-regular fa-clock" style="color:var(--pink); margin-right:8px;"></i>Hours</h3>
@@ -468,7 +482,7 @@
       </div>
       <div class="footer-col">
         <h4>Visit</h4>
-        <a href="https://www.google.com/maps/search/?api=1&query=7815+W+Burleigh+St+Milwaukee+WI" target="_blank" rel="noopener">7815 W Burleigh St, Milwaukee, WI</a>
+        <a href="https://www.google.com/maps/search/?api=1&query=7815+W+Burleigh+St+Milwaukee+WI+53222" target="_blank" rel="noopener">7815 W Burleigh St, Milwaukee, WI</a>
         <a href="https://square.site/book/27AGSWKGCJSG0/kookai-hair-salon-milwaukee-wi" target="_blank" rel="noopener">Book an Appointment</a>
       </div>
     </div>
