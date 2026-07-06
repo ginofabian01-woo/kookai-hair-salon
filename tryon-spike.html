@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Color Try-On — Engine Test (Internal)</title>
+<meta name="robots" content="noindex, nofollow">
+<style>
+  body{font-family:system-ui,sans-serif; background:#141116; color:#fffdfb; margin:0; padding:24px;}
+  h1{font-size:1.1rem;} h1 span{color:#f77fbe;}
+  #status{background:#232026; border-radius:8px; padding:10px 14px; font-size:0.85rem; white-space:pre-wrap; margin:12px 0; max-height:140px; overflow:auto;}
+  input[type=file]{margin:8px 0; color:#fffdfb;}
+  .row{display:flex; gap:14px; flex-wrap:wrap; margin-top:10px;}
+  .cell{text-align:center;}
+  .cell canvas, .cell img{max-width:300px; border-radius:10px; display:block;}
+  .cell .lbl{font-size:0.75rem; color:#aaa; margin-top:6px;}
+  .swatches{display:flex; gap:10px; margin:14px 0;}
+  .sw{width:44px; height:44px; border-radius:50%; border:2px solid #fff3; cursor:pointer;}
+  .sw.active{border-color:#f77fbe;}
+  .note{font-size:0.78rem; color:#888; max-width:640px;}
+</style>
+</head>
+<body>
+<h1>Kookai <span>Color Try-On</span> — engine test page (internal; demo colors only, not Matrix shades)</h1>
+<p class="note">Your photo never leaves this device — all processing happens right here in your browser.</p>
+<input type="file" id="file" accept="image/*">
+<div id="status">Pick a photo to begin. Loading MediaPipe in the background…</div>
+<div class="swatches" id="swatches"></div>
+<div class="row">
+  <div class="cell"><img id="src" alt=""><div class="lbl">Original</div></div>
+  <div class="cell"><canvas id="mask"></canvas><div class="lbl">Hair mask</div></div>
+  <div class="cell"><canvas id="out"></canvas><div class="lbl">Recolored (texture-preserving)</div></div>
+</div>
+<script type="module">
+const statusEl = document.getElementById('status');
+const log = (m) => { statusEl.textContent += "\n" + m; statusEl.scrollTop = statusEl.scrollHeight; };
+statusEl.textContent = "Booting…";
+
+const DEMO = [
+  {name:"demo copper", rgb:[164,74,36]},
+  {name:"demo cool blonde", rgb:[205,178,140]},
+  {name:"demo burgundy", rgb:[92,26,38]},
+  {name:"demo soft black", rgb:[24,18,20]}
+];
+let active = 0;
+let seg = null, lastConf = null, W = 0, H = 0;
+const img = document.getElementById('src');
+
+async function boot() {
+  try {
+    const vision = await import("https://cdn.jsdelivr.net/npm/@mediapipe/tasks-vision@0.10.14");
+    log("tasks-vision module loaded \u2713");
+    const { FilesetResolver, ImageSegmenter } = vision;
+    const files = await FilesetResolver.forVisionTasks("https://cdn.jsdelivr.net/npm/@mediapipe/tasks-vision@0.10.14/wasm");
+    log("WASM fileset resolved \u2713");
+    seg = await ImageSegmenter.createFromOptions(files, {
+      baseOptions: { modelAssetPath: "https://storage.googleapis.com/mediapipe-models/image_segmenter/hair_segmenter/float32/latest/hair_segmenter.tflite" },
+      runningMode: "IMAGE",
+      outputConfidenceMasks: true
+    });
+    log("hair segmenter model loaded \u2713 — ready for a photo");
+  } catch (e) {
+    log("MODEL LOAD FAILED: " + e.message);
+  }
+}
+boot();
+
+document.getElementById('file').addEventListener('change', async (ev) => {
+  const f = ev.target.files[0];
+  if (!f) return;
+  log("photo selected: " + f.name);
+  const url = URL.createObjectURL(f);
+  img.src = url;
+  await img.decode();
+  // downscale for speed
+  const maxDim = 900;
+  const scale = Math.min(1, maxDim / Math.max(img.naturalWidth, img.naturalHeight));
+  W = Math.round(img.naturalWidth * scale); H = Math.round(img.naturalHeight * scale);
+  const work = document.createElement('canvas'); work.width = W; work.height = H;
+  work.getContext('2d').drawImage(img, 0, 0, W, H);
+
+  if (!seg) { log("model not ready yet — wait for the \u2713 then re-select the photo"); return; }
+  const t0 = performance.now();
+  const res = seg.segment(work);
+  lastConf = res.confidenceMasks[0].getAsFloat32Array();
+  log("segmented " + W + "x" + H + " in " + Math.round(performance.now()-t0) + " ms \u2713");
+
+  const maskC = document.getElementById('mask'); maskC.width = W; maskC.height = H;
+  const mctx = maskC.getContext('2d');
+  const mimg = mctx.createImageData(W, H);
+  let hairPix = 0;
+  for (let i = 0; i < lastConf.length; i++) {
+    const v = Math.round(lastConf[i]*255);
+    if (lastConf[i] > 0.5) hairPix++;
+    mimg.data[i*4] = v; mimg.data[i*4+1] = v; mimg.data[i*4+2] = v; mimg.data[i*4+3] = 255;
+  }
+  mctx.putImageData(mimg, 0, 0);
+  log("hair coverage: " + (100*hairPix/lastConf.length).toFixed(1) + "% of frame");
+  render(work);
+});
+
+function render(workCanvas) {
+  if (!lastConf) return;
+  const outC = document.getElementById('out'); outC.width = W; outC.height = H;
+  const octx = outC.getContext('2d');
+  octx.drawImage(workCanvas || img, 0, 0, W, H);
+  const od = octx.getImageData(0, 0, W, H);
+  const d = od.data;
+  const [tr, tg, tb] = DEMO[active].rgb;
+  const tLum = 0.299*tr + 0.587*tg + 0.114*tb;
+  for (let i = 0; i < lastConf.length; i++) {
+    const a = lastConf[i];
+    if (a < 0.15) continue;
+    const r = d[i*4], g = d[i*4+1], b = d[i*4+2];
+    const lum = 0.299*r + 0.587*g + 0.114*b;
+    const k = lum / Math.max(tLum, 1);
+    const blend = Math.min(a, 0.9);
+    d[i*4]   = r*(1-blend) + (tr*k)*blend;
+    d[i*4+1] = g*(1-blend) + (tg*k)*blend;
+    d[i*4+2] = b*(1-blend) + (tb*k)*blend;
+  }
+  octx.putImageData(od, 0, 0);
+  log("recolor: " + DEMO[active].name + " \u2713");
+}
+
+const swDiv = document.getElementById('swatches');
+DEMO.forEach((c, i) => {
+  const el = document.createElement('div');
+  el.className = 'sw' + (i===0 ? ' active' : '');
+  el.style.background = `rgb(${c.rgb.join(',')})`;
+  el.title = c.name;
+  el.onclick = () => {
+    active = i;
+    document.querySelectorAll('.sw').forEach((s,j)=>s.classList.toggle('active', j===i));
+    // re-render from the original
+    if (img.src) {
+      const work = document.createElement('canvas'); work.width = W; work.height = H;
+      work.getContext('2d').drawImage(img, 0, 0, W, H);
+      render(work);
+    }
+  };
+  swDiv.appendChild(el);
+});
+</script>
+</body>
+</html>
