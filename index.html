@@ -122,7 +122,7 @@
       linear-gradient(180deg, #fffdfb 0%, #fff6fa 55%, #fdf3f7 100%);
     color:var(--black);
     overflow:hidden;
-    padding-top:130px;
+    padding:160px 0 28px;
   }
   .hero .wrap{position:relative; z-index:2; display:grid; grid-template-columns:1.1fr 0.9fr; gap:60px; align-items:center;}
   .hero-copy .eyebrow{color:var(--pink);}
@@ -143,13 +143,13 @@
   }
   .hero-actions{display:flex; gap:16px; flex-wrap:wrap;}
 
-  .hero-visual{position:relative; height:620px;}
+  .hero-visual{position:relative; height:480px;}
   .hero-frame{
     position:absolute; border-radius:24px; overflow:hidden;
     box-shadow:0 24px 50px rgba(20,17,22,0.14);
     border:1px solid rgba(20,17,22,0.06);
   }
-  .hero-frame.main{width:90%; height:100%; top:0; left:50%; transform:translateX(-50%); z-index:2;}
+  .hero-frame.main{width:84%; height:100%; top:0; left:50%; transform:translateX(-50%); z-index:2;}
   .hero-frame img{width:100%; height:100%; object-fit:cover; display:block;}
 
   .placeholder-img{
@@ -276,7 +276,7 @@
   @media (max-width:980px){
     .hero .wrap{grid-template-columns:1fr; text-align:center;}
     .hero-copy p{margin-left:auto; margin-right:auto;}
-    .hero-visual{height:480px; margin-top:20px;}
+    .hero-visual{height:380px; margin-top:20px;}
     .about .wrap{grid-template-columns:1fr;}
     .about-visual{order:2; height:340px;}
     .visit .wrap{grid-template-columns:1fr;}
@@ -300,13 +300,14 @@
   <div class="wrap">
     <a href="#home" class="brand"><img src="images/logo.png" alt="Kookai Hair Salon"></a>
     <nav class="links" id="navLinks">
-      <a href="https://www.instagram.com/hairbykookai/" target="_blank" rel="noopener">Instagram</a>
       <a href="services.html">Services</a>
-      <a href="#about">About</a>
       <a href="#visit">Visit</a>
+      <a href="#about">About</a>
     </nav>
     <div class="nav-cta">
       <a class="icon-btn" href="https://www.instagram.com/hairbykookai/" target="_blank" rel="noopener" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+      <a class="icon-btn" href="https://www.facebook.com/kookaihairsalon/" target="_blank" rel="noopener" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+      <a class="icon-btn" href="https://square.site/book/27AGSWKGCJSG0/kookai-hair-salon-milwaukee-wi" target="_blank" rel="noopener" aria-label="Book an appointment"><i class="fa-regular fa-calendar-check"></i></a>
       <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu"><i class="fa-solid fa-bars"></i></button>
     </div>
   </div>
@@ -399,10 +400,6 @@
         </iframe>
       </div>
       <a href="https://www.google.com/maps/search/?api=1&query=7815+W+Burleigh+St+Milwaukee+WI+53222" target="_blank" rel="noopener" class="btn btn-outline on-light" style="margin-top:20px;"><i class="fa-solid fa-diamond-turn-right"></i> Get Directions</a>
-      <div class="info-row" style="margin-top:8px;">
-        <i class="fa-solid fa-comment-sms"></i>
-        <div><div class="label">Phone — Text Only</div><a href="sms:+14143679265" style="color:inherit;">414.367.9265</a></div>
-      </div>
       <p class="verify-note">Hours and pricing are pulled from the salon's Square booking page — please double-check these details before the site goes live.</p>
     </div>
     <div class="visit-card reveal">
@@ -416,18 +413,10 @@
         <tr><td>Saturday</td><td>9:00 AM – 3:00 PM</td></tr>
         <tr><td>Sunday</td><td>Closed</td></tr>
       </table>
-    </div>
-  </div>
-</section>
-
-<!-- ================= FINAL CTA ================= -->
-<section class="final-cta">
-  <div class="wrap reveal">
-    <h2>Ready for your next look?</h2>
-    <p>Book directly through Square, or follow along on Instagram to see the latest color work before your appointment.</p>
-    <div class="hero-actions" style="justify-content:center;">
-      <a href="https://square.site/book/27AGSWKGCJSG0/kookai-hair-salon-milwaukee-wi" target="_blank" rel="noopener" class="btn btn-dark"><i class="fa-regular fa-calendar-check"></i> Book on Square</a>
-      <a href="https://www.instagram.com/hairbykookai/" target="_blank" rel="noopener" class="btn btn-outline"><i class="fa-brands fa-instagram"></i> Follow @hairbykookai</a>
+      <div class="info-row" style="margin-top:18px; border-bottom:none;">
+        <i class="fa-solid fa-comment-sms"></i>
+        <div><div class="label">Phone — Text Only</div><a href="sms:+14143679265" style="color:inherit;">414.367.9265</a></div>
+      </div>
     </div>
   </div>
 </section>
