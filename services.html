@@ -160,6 +160,20 @@
   }
   .svc-callout i{color:var(--pink); font-size:1.15rem; margin-top:3px;}
   .svc-callout strong{color:var(--black);}
+  .policy-block{margin-top:70px;}
+  .policy-card{
+    background:#fff; border:1px solid var(--line); border-radius:var(--radius);
+    padding:34px 38px; box-shadow:0 8px 26px rgba(20,17,22,0.05);
+    max-width:820px;
+  }
+  .policy-list{list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:16px;}
+  .policy-list li{display:flex; gap:14px; align-items:flex-start; font-size:0.95rem; color:rgba(20,17,22,0.78);}
+  .policy-list i{color:var(--pink); font-size:1.05rem; margin-top:4px; flex:none;}
+  .policy-close{
+    margin:24px 0 0; padding-top:20px; border-top:1px solid var(--line);
+    font-size:0.95rem; color:var(--black); font-style:italic;
+  }
+  .policy-sign{font-family:'Playfair Display', serif; font-style:normal; font-weight:600; margin-left:6px;}
 
   /* FINAL CTA */
   .final-cta{
@@ -208,7 +222,6 @@
     <nav class="links" id="navLinks">
       <a href="https://www.instagram.com/hairbykookai/" target="_blank" rel="noopener">Instagram</a>
       <a href="services.html" class="active">Services</a>
-      <a href="salon-policy.html">Salon Policy</a>
       <a href="index.html#about">About</a>
       <a href="index.html#visit">Visit</a>
       <a href="https://square.site/book/27AGSWKGCJSG0/kookai-hair-salon-milwaukee-wi" target="_blank" rel="noopener" class="btn btn-primary"><i class="fa-regular fa-calendar-check"></i> Book Now</a>
@@ -351,6 +364,17 @@
       <i class="fa-solid fa-circle-info"></i>
       <div>
         <strong>A note on pricing:</strong> final cost can vary from the listed starting price depending on your hair's length and density, and the time and product your service requires. Katrina will always confirm any adjustments with you before your service begins.
+      </div>
+    </div>
+    <div class="policy-block reveal" id="policy">
+      <div class="svc-cat-head"><h2>Salon Policy</h2><div class="rule"></div></div>
+      <div class="policy-card">
+        <ul class="policy-list">
+          <li><i class="fa-regular fa-credit-card"></i> A credit card is required to book — it simply saves your spot in my chair!</li>
+          <li><i class="fa-regular fa-calendar"></i> Life happens! If you need to move your appointment, I kindly ask for at least 48 hours' notice so I can offer your time to another guest.</li>
+          <li><i class="fa-regular fa-clock"></i> No-shows and cancellations within 24 hours of your appointment will be charged a $50 fee.</li>
+        </ul>
+        <p class="policy-close">Thank you so much for your understanding and for supporting my business ♡ <span class="policy-sign">— Katrina</span></p>
       </div>
     </div>
     <p class="svc-note">Service list and durations are pulled from the salon's Square booking page. Current pricing is shown at checkout when you book.</p>
