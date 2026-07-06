@@ -112,6 +112,7 @@
   }
   .icon-btn:hover{background:var(--pink); border-color:var(--pink); color:#fff;}
   .menu-toggle{display:none; background:none; border:none; font-size:1.4rem; color:var(--black); cursor:pointer;}
+  .mobile-only{display:none;}
 
   /* HERO — light, airy blend instead of the previous dark backdrop */
   .hero{
@@ -288,6 +289,7 @@
     nav.links{position:fixed; top:0; right:-100%; height:100vh; width:78%; background:var(--white); flex-direction:column; justify-content:center; gap:26px; transition:right .35s ease; box-shadow:-10px 0 40px rgba(0,0,0,0.15);}
     nav.links.open{right:0;}
     nav.links a{color:var(--black) !important;}
+    nav.links a.mobile-only{display:block;}
     .menu-toggle{display:block;}
     .nav-cta .btn span{display:none;}
   }
@@ -303,6 +305,7 @@
       <a href="services.html">Services</a>
       <a href="#visit">Visit</a>
       <a href="#about">About</a>
+      <a href="https://square.site/book/27AGSWKGCJSG0/kookai-hair-salon-milwaukee-wi" target="_blank" rel="noopener" class="mobile-only">Booking</a>
     </nav>
     <div class="nav-cta">
       <a class="icon-btn" href="https://www.instagram.com/hairbykookai/" target="_blank" rel="noopener" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
@@ -469,8 +472,14 @@
   // Mobile menu toggle
   const menuToggle = document.getElementById('menuToggle');
   const navLinks = document.getElementById('navLinks');
-  menuToggle.addEventListener('click', () => navLinks.classList.toggle('open'));
+  menuToggle.addEventListener('click', (e) => { e.stopPropagation(); navLinks.classList.toggle('open'); });
   navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navLinks.classList.remove('open')));
+  // Close the mobile menu when clicking/tapping anywhere outside it
+  document.addEventListener('click', (e) => {
+    if (navLinks.classList.contains('open') && !navLinks.contains(e.target) && !menuToggle.contains(e.target)) {
+      navLinks.classList.remove('open');
+    }
+  });
 
   // Reveal on scroll (progressive enhancement — see CSS comment above .reveal.pre)
   const revealEls = document.querySelectorAll('.reveal:not(.in)');

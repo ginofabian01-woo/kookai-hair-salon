@@ -110,6 +110,7 @@
   }
   .icon-btn:hover{background:var(--pink); border-color:var(--pink); color:#fff;}
   .menu-toggle{display:none; background:none; border:none; font-size:1.4rem; color:var(--black); cursor:pointer;}
+  .mobile-only{display:none;}
 
   /* PAGE HERO */
   .page-hero{
@@ -206,6 +207,7 @@
     nav.links{position:fixed; top:0; right:-100%; height:100vh; width:78%; background:var(--white); flex-direction:column; justify-content:center; gap:26px; transition:right .35s ease; box-shadow:-10px 0 40px rgba(0,0,0,0.15);}
     nav.links.open{right:0;}
     nav.links a{color:var(--black) !important;}
+    nav.links a.mobile-only{display:block;}
     .menu-toggle{display:block;}
     .nav-cta .btn span{display:none;}
     .page-hero{padding:150px 0 50px;}
@@ -222,6 +224,7 @@
       <a href="services.html" class="active">Services</a>
       <a href="index.html#visit">Visit</a>
       <a href="index.html#about">About</a>
+      <a href="https://square.site/book/27AGSWKGCJSG0/kookai-hair-salon-milwaukee-wi" target="_blank" rel="noopener" class="mobile-only">Booking</a>
     </nav>
     <div class="nav-cta">
       <a class="icon-btn" href="https://www.instagram.com/hairbykookai/" target="_blank" rel="noopener" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
@@ -372,9 +375,9 @@
           <li><i class="fa-regular fa-credit-card"></i> A credit card is required to book — it simply saves your spot in my chair!</li>
           <li><i class="fa-regular fa-calendar"></i> Life happens! If you need to move your appointment, I kindly ask for at least 48 hours' notice so I can offer your time to another guest.</li>
           <li><i class="fa-regular fa-clock"></i> No-shows and cancellations within 24 hours of your appointment will be charged a $50 fee.</li>
-          <li><i class="fa-solid fa-comment-sms"></i> Questions? Text me at <a href="sms:+14143679265" style="color:var(--pink); font-weight:600;">414.367.9265</a> <em>(text only, please — no calls)</em></li>
+          <li><i class="fa-solid fa-comment-sms"></i> Questions? Text me at <a href="sms:+14143679265" style="color:var(--pink); font-weight:600;">414.367.9265</a> <em>(text only, please)</em></li>
         </ul>
-        <p class="policy-close">Thank you so much for your understanding and for supporting my business ♡ <span class="policy-sign">— Katrina</span></p>
+        <p class="policy-close">Thank you so much for your understanding and for supporting my small business ♡ <span class="policy-sign">— Katrina</span></p>
       </div>
     </div>
     <p class="svc-note">Service list and durations are pulled from the salon's Square booking page. Current pricing is shown at checkout when you book.</p>
@@ -439,8 +442,14 @@
   // Mobile menu toggle
   const menuToggle = document.getElementById('menuToggle');
   const navLinks = document.getElementById('navLinks');
-  menuToggle.addEventListener('click', () => navLinks.classList.toggle('open'));
+  menuToggle.addEventListener('click', (e) => { e.stopPropagation(); navLinks.classList.toggle('open'); });
   navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navLinks.classList.remove('open')));
+  // Close the mobile menu when clicking/tapping anywhere outside it
+  document.addEventListener('click', (e) => {
+    if (navLinks.classList.contains('open') && !navLinks.contains(e.target) && !menuToggle.contains(e.target)) {
+      navLinks.classList.remove('open');
+    }
+  });
 
   // Reveal on scroll (progressive enhancement — content visible by default)
   const revealEls = document.querySelectorAll('.reveal:not(.in)');
